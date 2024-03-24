@@ -75,7 +75,7 @@ $next_page_url = "car-single.php?location=$loc_id&pickupLocation=$pickloc_id&dro
         $result=$conn->query($sql);
         if($result->num_rows>0){
           while($rows=$result->fetch_assoc()){
-            ?>
+            ?> 
                 <div class="col-md-4">
                     <div class="car-wrap rounded ftco-animate">
                         <div class="img rounded d-flex align-items-end">
