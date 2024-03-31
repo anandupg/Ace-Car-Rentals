@@ -284,6 +284,12 @@ $result=$conn->query($sql);
 $row=$result->fetch_assoc();
 
 $count_loc=$row['cq'];
+
+$sql3="SELECT COUNT(*) as cq FROM tbl_login WHERE type_id = 3";
+$result3=$conn->query($sql3);
+$row3=$result3->fetch_assoc();
+
+$count_drivers=$row3['cq'];
 ?>
 
 
@@ -296,32 +302,36 @@ $count_loc=$row['cq'];
 				<div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
 					<div class="block-18">
 						<div class="text text-border d-flex align-items-center">
+						<span style="margin-right:20px;">Total <br>Users</span>
 							<strong class="number" data-number="<?php echo $count_users ?> ">0</strong>
-							<span>Total <br>Users</span>
+							
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
 					<div class="block-18">
 						<div class="text text-border d-flex align-items-center">
+						<span style="margin-right:20px;">Total <br>Cars</span>
 							<strong class="number" data-number="<?php echo $count_cars ?> ">0</strong>
-							<span>Total <br>Cars</span>
+							
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
 					<div class="block-18">
 						<div class="text text-border d-flex align-items-center">
-							<strong class="number" data-number="0">0</strong>
-							<span>Happy <br>Customers</span>
+						<span style="margin-right:20px;">Total <br>Drivers</span>
+							<strong class="number" data-number="<?php echo $count_drivers ?> ">0</strong>
+							
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
 					<div class="block-18">
 						<div class="text d-flex align-items-center">
+						<span style="margin-right:20px;">Total <br>locations</span>
 							<strong class="number" data-number="<?php echo $count_loc ?>">0</strong>
-							<span>Total <br>locations</span>
+							
 						</div>
 					</div>
 				</div>

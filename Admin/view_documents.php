@@ -159,10 +159,10 @@ if ($result1 && $result1->num_rows > 0) {
                     <?php
                         if ($row['status'] == "Pending") {
                             echo "<a class='btn btn-sm btn-success approve-button mr-2' href='up_doc_sts.php?doc_id={$row['doc_id']}&login_id={$row1['login_id']}'><i class='fas fa-check'></i> Approve</a>";
-                            echo "<a class='btn btn-sm btn-danger decline-button' href='up_docdec_sts.php?doc_id={$row['doc_id']}&login_id={$row1['login_id']}' onclick='return confirmDecline()'><i class='fas fa-times'></i> Decline</a>";
+                            echo "<a class='btn btn-sm btn-danger decline-button' href='up_docdec_sts.php?doc_id={$row['doc_id']}&login_id={$login_id}' onclick='return confirmDecline()'><i class='fas fa-times'></i> Decline</a>";
                         } else if ($row['status'] == "Approved") {
                             // If status is not "Pending", display some other message or action
-                            echo "<a class='btn btn-sm btn-danger decline-button' href='up_docdec_sts.php?doc_id={$row['doc_id']}&login_id={$row1['login_id']}' onclick='return confirmDecline()'><i class='fas fa-times'></i> Decline</a>";
+                            //echo "<a class='btn btn-sm btn-danger decline-button' href='up_docdec_sts.php?doc_id={$row['doc_id']}&login_id={$row1['login_id']}' onclick='return confirmDecline()'><i class='fas fa-times'></i> Decline</a>";
                         }
                     ?>
                     </div>

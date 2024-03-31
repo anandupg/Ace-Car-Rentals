@@ -367,7 +367,7 @@ body {
         .create-account {
             margin-top: 10px;
         }
-        .navbar {
+        /* .navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -378,7 +378,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
         
     </style>
 </head>
@@ -400,7 +400,7 @@ body {
     <a class="navbar-brand" href="index.php">ACE <span>Car Rentals</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> 
+                <span class="oi oi-menu"></span> Menu
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">

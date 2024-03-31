@@ -210,7 +210,7 @@ window.location.replace("documents.php");
 include "connect.php";
 $sql = "SELECT * FROM tbl_documents WHERE login_id = '$login_id' and status='Approved';";
 $result=$conn->query($sql);
-$sqll="SELECT * FROM tbl_documents where status='Pending';";
+$sqll="SELECT * FROM tbl_documents where status='Pending'and login_id = '$login_id';";
 $resultt=$conn->query($sqll);
 
 if($result->num_rows > 0){
@@ -263,8 +263,6 @@ echo ' <div class="record">
 
     
         
-    } else {
-        echo '<div class="no-records">No records found</div>';
     }
      
     // Close database connection

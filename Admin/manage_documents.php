@@ -166,8 +166,8 @@ $result_pending = $conn->query($sql_pending);
                                     echo "<td><a class='btn btn-sm btn-outline-danger' style='border-color: red;' href='up_doc_sts.php?doc_id={$row2['doc_id']}' onclick='return confirmDecline()'>Decline</a></td>";
                                 } elseif($row2['status'] == 'Pending' || $row2['status'] == 'Not Approved') {
                                     echo "<td><a class='btn btn-sm btn-success' href='up_doc_sts.php?doc_id={$row2['doc_id']}&login_id={$row['login_id']}'><i class='fas fa-check'></i> Approve</a></td>";
-                                    echo "<td><a class='btn btn-sm btn-danger' href='up_docdec_sts.php?doc_id={$row2['doc_id']}&login_id={$row['login_id']}' onclick='return confirmDecline()'><i class='fas fa-times'></i> Decline</a></td>";
-                                     } else {
+                                    echo "<td><a class='btn btn-sm btn-outline-danger' href='up_docdec_sts.php?doc_id={$row2['doc_id']}&login_id={$row['login_id']}' onclick='return confirmDecline()' style='border-color: red; '><i class='fas fa-times'></i> Decline</a></td>";
+                                } else {
                                     echo "<td><a class='btn btn-sm btn-outline-success' style='border-color: red;' href='up_doc_sts.php?doc_id={$row2['doc_id']}'>Approve</a></td>";
                                 }
                                 echo "<td><a class='btn btn-sm btn-outline-success' style='border-color: red;' href='view_documents.php?doc_id={$row2['doc_id']}&regi_id={$row['reg_id']}'>View Documents</a></td>";
@@ -207,7 +207,7 @@ $result_pending = $conn->query($sql_pending);
                                                            <th scope="col">Email</th>
                                                               <th scope="col">Status</th>
                                                            
-                                                            <th scope="col" class="text-center">Actions</th> 
+                                                            <!-- <th scope="col" class="text-center">Actions</th>  -->
                                                             <td></td>
                                                             <td></td>
 
@@ -217,20 +217,20 @@ $result_pending = $conn->query($sql_pending);
                                                     <?php
 
 
-$sql2 = "SELECT * FROM tbl_documents WHERE status='Approved';";
-$result2 = $conn->query($sql2);
+$sql3 = "SELECT * FROM tbl_documents WHERE status='Approved';";
+$result3 = $conn->query($sql3);
 
 // Check if both queries executed successfully
-if ($result && $result2) {
+if ($result && $result3) {
    
     // Loop through the result set of tbl_documents
-    while ($row2 = $result2->fetch_assoc()) {
+    while ($row3 = $result3->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row2['doc_id'] . "</td>";
-        echo "<td>" . $row2['login_id'] . "</td>";
+        echo "<td>" . $row3['doc_id'] . "</td>";
+        echo "<td>" . $row3['login_id'] . "</td>";
 
         // Retrieve data from tbl_registration based on login_id
-        $login_id = $row2['login_id'];
+        $login_id = $row3['login_id'];
         $sql_registration = "SELECT * FROM tbl_registration WHERE login_id=$login_id";
         $registration_result = $conn->query($sql_registration);
 
@@ -241,13 +241,13 @@ if ($result && $result2) {
             echo "<td>" . $row['email'] . "</td>";
            
         }
-        echo "<td>" . $row2['status'] . "</td>";
-        if ($row2['status'] == 'Approved') {
-            echo "<td><a class='btn btn-sm btn-outline-danger' style='border-color: red;' href='up_docdec_sts.php?doc_id={$row2['doc_id']}&login_id={$row['login_id']}' onclick='return confirmDecline()'>Decline</a></td>";
-        } else{
-
-        }     
-        echo "<td><a class='btn btn-sm btn-outline-success' style='border-color: red;' href='view_documents.php?doc_id={$row2['doc_id']}&regi_id={$row['reg_id']}&login_id={$row['login_id']}'>View Documents</a></td>"; 
+         echo "<td>" . $row3['status'] . "</td>";
+        // if ($row3['status'] == 'Approved') {
+        //     echo "<td><a class='btn btn-sm btn-outline-danger' href='up_docdec_sts.php?doc_id={$row3['doc_id']}&login_id={$row3['login_id']}' onclick='return confirmDecline()' style='border-color: red; '><i class='fas fa-times'></i> Decline</a></td>";
+        // } else{
+        //     echo "fefs";
+        // }     
+        echo "<td><a class='btn btn-sm btn-outline-success' style='border-color: red;' href='view_documents.php?doc_id={$row3['doc_id']}&regi_id={$row['reg_id']}&login_id={$row['login_id']}'>View Documents</a></td>"; 
        
         echo "</tr>";
     }

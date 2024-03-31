@@ -463,7 +463,7 @@ if ($result) {
         </div>
         <div class="col-md-6">
     <div class="dropdown-container" id="dropdown-container1">
-      <form action="#" method="post" id="password_change_form">
+      <form action="#" method="post" id="password_change_form" onsubmit="return check_error()">
       <div class="form-group row">
     <label for="old_password" class="col-sm-4 col-form-label">Old Password:</label>
     <div class="col-sm-8">
@@ -698,6 +698,19 @@ $(document).ready(function(){
 
 </script>
 
+<!-- <script>
+  function check_error() {
+
+var errorElements = document.querySelectorAll('.error-message');
+for (var i = 0; i < errorElements.length; i++) {
+  if (errorElements[i].innerText !== '') {
+    // If any error message exists, prevent form submission
+    return false;
+  }
+}
+    return true;
+}
+</script> -->
 
 <script>
   function showEnlargedImage(imageUrl) {
