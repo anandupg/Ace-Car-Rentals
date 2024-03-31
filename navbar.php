@@ -70,7 +70,7 @@ $conn->close();
         <li class="nav-item <?php echo isActive('index.php', $current_page); ?>"><a href="index.php" class="nav-link">Home</a></li>
         <li class="nav-item <?php echo isActive('car.php', $current_page); ?>"><a href="car.php" class="nav-link">Cars</a></li>
         <li class="nav-item <?php echo isActive('mybookings.php', $current_page); ?>"><a href="mybookings.php" class="nav-link">My Bookings</a></li>
-        <li class="nav-item <?php echo isActive('about.php', $current_page); ?>"><a href="about.php" class="nav-link">About</a></li>
+        <li class="nav-item <?php echo isActive('about.php', $current_page); ?>"><a href="about.php" class="nav-link">About Us</a></li>
         <li class="nav-item <?php echo isActive('contact.php', $current_page); ?>"><a href="contact.php" class="nav-link">Contact</a></li>
        
     </ul>
@@ -110,7 +110,7 @@ $conn->close();
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item <?php echo isActive('index.php', $current_page); ?>"><a href="index.php" class="nav-link">Home</a></li>
                 <li class="nav-item <?php echo isActive('car.php', $current_page); ?>"><a href="car.php" class="nav-link">Cars</a></li>
-                <li class="nav-item <?php echo isActive('about.php', $current_page); ?>"><a href="about.php" class="nav-link">About</a></li>
+                <li class="nav-item <?php echo isActive('about.php', $current_page); ?>"><a href="about.php" class="nav-link">About Us</a></li>
                 <li class="nav-item <?php echo isActive('contact.php', $current_page); ?>"><a href="contact.php" class="nav-link">Contact</a></li>
                 <li class="nav-item <?php echo isActive('login.php', $current_page); ?>"><a href="login.php" class="nav-link">Login</a></li>
             </ul>
@@ -119,7 +119,7 @@ $conn->close();
 </nav>
 <?php
 }
-?>
+?> 
 
     <script>
     function showDropdown() {
