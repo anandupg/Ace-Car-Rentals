@@ -475,7 +475,7 @@ if (isset($_POST['delete']) && $_POST['delete'] == 1) {
                                         $image = "./productimg/" . $row['image'];
                                         // Output table data for each column
                                         echo "<th scope='row'>" . $row['car_id'] . "</th>";
-                                        echo "<td><img src='" . $image . "' alt='Car Image' width='65px' height='65px' style='cursor:pointer;' onclick=\"showEnlargedImage('" . $image . "');\"></td>";
+                                        echo "<td><img src='" . $image . "' alt='Car Image' width='95px' height='65px' style='cursor:pointer;' onclick=\"showEnlargedImage('" . $image . "');\"></td>";
 
                                         echo "<td>" . $row['company'] . "</td>";
                                         echo "<td>" . $row['model'] . "</td>";

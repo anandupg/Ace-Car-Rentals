@@ -123,34 +123,11 @@ if (isset($_POST['submit'])) {
     } catch (Exception $e) {
       if($result->num_rows > 0){
         ?>
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Login error</title>
-              <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            </head>
-            <body>
-              
-            </body>
             <script>
-              Swal.fire({
-  icon: "error",
-  title: "Oops...",
-  text: "Please connect to internet",
-  width: 350,
-  height: 60,
-}).then((result) => {
-  // Check if the user clicked "OK"
-  if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
-    // Redirect to login.php
-    window.location.replace("login.php");
-  }
-});
-        
-            </script>
-            </html>
+  alert("Oops... Please connect to the internet.");
+  window.location.replace("login.php");
+</script>
+
             <?php
       }
     }

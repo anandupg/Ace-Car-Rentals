@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Ace Car Rentals</title>
+    <title>Admin</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -30,13 +30,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <script>
-        // Check if the page was accessed through browser's history
-        if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD) {
-            // Redirect the user to the login page if accessed through history
-            window.location.href = "login.php";
-        }
-    </script>
+    
     <style>
         /* Add this CSS to make the input fields half the size */
 .half-size-input {

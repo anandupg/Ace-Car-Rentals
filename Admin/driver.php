@@ -29,13 +29,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <script>
-        // Check if the page was accessed through browser's history
-        if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD) {
-            // Redirect the user to the login page if accessed through history
-            window.location.href = "login.php";
-        }
-    </script>
+   
 </head>
 
 <body>

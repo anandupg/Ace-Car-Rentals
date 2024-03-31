@@ -6,11 +6,17 @@ $row=$result->fetch_assoc();
 
 $count_cars=$row['cq'];
 
-$sql2="SELECT COUNT(*) as cq FROM tbl_login";
+$sql2="SELECT COUNT(*) as cq FROM tbl_login WHERE type_id=2";
 $result2=$conn->query($sql2);
 $row2=$result2->fetch_assoc();
 
 $count_users=$row2['cq'];
+
+$sql3="SELECT COUNT(*) as cq FROM tbl_login WHERE type_id=3";
+$result3=$conn->query($sql3);
+$row3=$result3->fetch_assoc();
+
+$count_drivers=$row3['cq'];
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +47,7 @@ $count_users=$row2['cq'];
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -150,8 +157,8 @@ $count_users=$row2['cq'];
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Today Sales</p>
-                                <h6 class="mb-0">0</h6>
+                                <p class="mb-2">Today Drivers</p>
+                                <h6 class="mb-0"><?php echo $count_drivers; ?></h6>
                             </div>
                         </div>
                     </div>
@@ -168,8 +175,8 @@ $count_users=$row2['cq'];
             </div>
             <!-- Sale & Revenue End -->
 
-        </div>
-        <!-- Content End -->
+      <!-- Sales Chart Start -->
+    
 
 
         <!-- Back to Top -->

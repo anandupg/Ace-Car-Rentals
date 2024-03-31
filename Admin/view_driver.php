@@ -160,8 +160,22 @@
                                             // If status is not "Pending", display some other message or action
                                             echo "<a class='btn btn-sm btn-danger decline-button ml-4' style='border-color: green;' href='up_driver_sts.php?driver_id={$row['driver_id']}' onclick='return confirmDecline()'><i class='fas fa-times'></i> Decline</a>";
                                         }else{
-                                            // echo "<a class='btn btn-sm btn-success approve-button mr-4' href='up_driver_sts.php?driver_id={$row['driver_id']}'><i class='fas fa-check'></i> Approve</a>";
-                                            // echo "<a class='btn btn-sm btn-danger decline-button ml-3' style='border-color: green;' href='up_driver_sts.php?driver_id={$row['driver_id']}' onclick='return confirmDecline()'><i class='fas fa-times'></i> Decline</a>";
+                                            
+                                            // Check if there is a login_id associated with the driver
+                                            $selectLogin = "SELECT login_id FROM tbl_driver WHERE driver_id='{$row['driver_id']}'";
+                                            $login_result = $conn->query($selectLogin);
+                                            $login_row = $login_result->fetch_assoc();
+                                            $driver_login_id = $login_row['login_id'];
+                                            
+                                            if ($driver_login_id == 0 || $driver_login_id == null) {
+                                                // If login_id is 0 or null, make the button inactive
+                                            } else {
+                                                // If there is a login_id, generate the approve button
+                                                echo "<a class='btn btn-sm btn-success approve-button mr-4' href='up_driver_sts.php?driver_id={$row['driver_id']}'><i class='fas fa-check'></i> Approve</a>";
+                                            }
+                                           
+                                                                                        //  echo "  ";
+                                            //  echo "<a class='btn btn-sm btn-danger decline-button ml-3' style='border-color: green;' href='up_driver_sts.php?driver_id={$row['driver_id']}' onclick='return confirmDecline()'><i class='fas fa-times'></i> Decline</a>";
                                         }
                                         echo '</div>'; // End of buttons div
                                         echo '</div>'; // End of flexbox div
