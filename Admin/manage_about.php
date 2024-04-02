@@ -34,6 +34,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_query($conn, $sql)) {
             // Query executed successfully
             ?>
+            <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                      
+                      
+                      <title>About updated</title>
+                      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    </head>
+                    <body>
+                      
+                    </body>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script>
                 console.log("Success message should be displayed.");
@@ -45,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     height: 60,
                 });
             </script>
+            </html>
             <?php
         } else {
             // Query execution failed
@@ -185,45 +197,17 @@ mysqli_close($conn);
 </div>
 
 <script>
-function checkLength() {
-    var aboutDesc = document.getElementById("about_desc").value;
-    var maxLength = 2000;
-    var aboutDescLength = aboutDesc.length;
-    var aboutDescError = document.getElementById("about_descError");
-
-    if (aboutDescLength > maxLength) {
-        aboutDescError.textContent = "Maximum " + maxLength + " characters allowed.";
-    } else {
-        aboutDescError.textContent = "";
-    }
-}
-
-function validateForm() {
-    var aboutDesc = document.getElementById("about_desc").value;
-    var maxLength = 2000;
-    var aboutDescLength = aboutDesc.length;
-    var aboutDescError = document.getElementById("about_descError");
-
-    if (aboutDescLength > maxLength) {
-        aboutDescError.textContent = "Maximum " + maxLength + " characters allowed.";
-        return false;
-    } else {
-        aboutDescError.textContent = "";
-        return true;
-    }
-}
-</script>
-
-
-
-<script>
 function validateForm() {
     var aboutDesc = document.getElementById("about_desc").value.trim();
     var aboutDescError = document.getElementById("about_descError");
-    
+    var maxLength = 1500;
+
     // Check if about_desc is empty
     if (aboutDesc === "") {
         aboutDescError.textContent = "About Description cannot be empty";
+        return false; // Prevent form submission
+    } else if (aboutDesc.length > maxLength) {
+        aboutDescError.textContent = "Maximum " + maxLength + " characters allowed.";
         return false; // Prevent form submission
     } else {
         aboutDescError.textContent = ""; // Clear error message
@@ -231,6 +215,7 @@ function validateForm() {
     }
 }
 </script>
+
 
 
 
