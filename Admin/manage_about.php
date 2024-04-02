@@ -1,3 +1,66 @@
+<?php
+include "../connect.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if the form has been submitted
+    
+    // Validate and sanitize the input
+    $about_id = 1; // Assuming the about_id is 1
+    $about_desc = $_POST['about_desc']; // Assuming you're using POST method
+    
+    // Perform any additional validation if needed
+    
+    // Check if the about_desc contains more than 1500 words
+    $wordCount = str_word_count($about_desc);
+    if ($wordCount > 1500) {
+        // Display error message
+        ?>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            console.log("Error message should be displayed.");
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "About description should not exceed 1500 words.",
+                width: 350,
+                height: 60,
+            });
+        </script>
+        <?php
+    } else {
+        // Update query
+        $sql = "UPDATE tbl_about SET about_desc = '$about_desc' WHERE about_id = $about_id";
+        
+        if (mysqli_query($conn, $sql)) {
+            // Query executed successfully
+            ?>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                console.log("Success message should be displayed.");
+                Swal.fire({
+                    icon: "success",
+                    title: "Updated",
+                    text: "About section updated successfully",
+                    width: 350,
+                    height: 60,
+                });
+            </script>
+            <?php
+        } else {
+            // Query execution failed
+            echo "Error updating About Description: " . mysqli_error($conn);
+        }
+    }
+    
+}
+// Close the database connection
+mysqli_close($conn);
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +92,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    
+   
 </head>
 
 <body>
@@ -47,18 +110,9 @@
         <div class="sidebar pe-4 pb-3">
     <nav class="navbar bg-secondary navbar-dark">
         <a href="" class="navbar-brand mx-4 mb-3">
-        <h4 class="text-white"><i></i><br>Ace Car Rentals</h4>              
+            <h4 class="text-white"><i></i><br>Ace Car Rentals</h4>
         </a>
-        <!-- <div class="d-flex align-items-center ms-4 mb-4">
-            <div class="position-relative">
-                <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
-            </div>
-            <div class="ms-3">
-                <h6 class="mb-0 text-white">Admin</h6>
-                <span class="text-white">Admin</span>
-            </div>
-        </div> -->
+       
         <div class="navbar-nav w-100">
             <a href="admin.php" class="nav-item nav-link  text-white"><i class="fa fa-home"></i> Home</a>
             <a href="manage_car.php" class="nav-item nav-link text-white"><i class="fas fa-car"></i> Manage Cars</a>
@@ -69,9 +123,9 @@
             <a href="driver.php" class="nav-item nav-link  text-white"><i class="fas fa-car-side"></i> Drivers</a>
             <a href="manage_rentals.php" class="nav-item nav-link text-white"><i class="fas fa-car-side"></i> Rentals</a>
             <a href="manage_documents.php" class="nav-item nav-link text-white"><i class="fas fa-file-alt"></i> Documents</a>
-            <a href="manage_payments.php" class="nav-item nav-link active text-white"><i class="fas fa-credit-card"></i> Payments</a>
+            <a href="manage_payments.php" class="nav-item nav-link  text-white"><i class="fas fa-credit-card"></i> Payments</a>
             <a href="manage_review.php" class="nav-item nav-link text-white"><i class="fa fa-tachometer-alt me-2"></i> Reviews</a>
-            <a href="manage_about.php" class="nav-item nav-link text-white"><i class="fa fa-tachometer-alt me-2"></i> About</a>
+            <a href="manage_about.php" class="nav-item nav-link active text-white"><i class="fa fa-tachometer-alt me-2"></i> About</a>
 
         </div>
     </nav>
@@ -109,13 +163,91 @@
 
 
             
+            <div class="container-fluid pt-4 px-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="bg-secondary rounded p-4">
+                <h6 class="mb-4">Update About Description</h6>
+                <form id="updateAboutForm" method="post" onsubmit="return validateForm()">
+                    
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <textarea class="form-control" id="about_desc" name="about_desc" rows="4" cols="7" oninput="checkLength()"></textarea>
+                        </div>
+                        <div id="about_descError" class="text-danger error-message" style="font-size: 10px; color: red;"></div>
+                    </div>
+                    
+                    <button type="submit" name="password_sbout" value="Update About" class="btn btn-primary m-2">Update About</button>
+                </form>
+            </div>
         </div>
-        <!-- Content End -->
+    </div>
+</div>
+
+<script>
+function checkLength() {
+    var aboutDesc = document.getElementById("about_desc").value;
+    var maxLength = 2000;
+    var aboutDescLength = aboutDesc.length;
+    var aboutDescError = document.getElementById("about_descError");
+
+    if (aboutDescLength > maxLength) {
+        aboutDescError.textContent = "Maximum " + maxLength + " characters allowed.";
+    } else {
+        aboutDescError.textContent = "";
+    }
+}
+
+function validateForm() {
+    var aboutDesc = document.getElementById("about_desc").value;
+    var maxLength = 2000;
+    var aboutDescLength = aboutDesc.length;
+    var aboutDescError = document.getElementById("about_descError");
+
+    if (aboutDescLength > maxLength) {
+        aboutDescError.textContent = "Maximum " + maxLength + " characters allowed.";
+        return false;
+    } else {
+        aboutDescError.textContent = "";
+        return true;
+    }
+}
+</script>
+
+
+
+<script>
+function validateForm() {
+    var aboutDesc = document.getElementById("about_desc").value.trim();
+    var aboutDescError = document.getElementById("about_descError");
+    
+    // Check if about_desc is empty
+    if (aboutDesc === "") {
+        aboutDescError.textContent = "About Description cannot be empty";
+        return false; // Prevent form submission
+    } else {
+        aboutDescError.textContent = ""; // Clear error message
+        return true; // Allow form submission
+    }
+}
+</script>
+
 
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+
+<!-- <div class="row mb-3">
+                        <label for="oldpassword" class="col-sm-2 col-form-label white-label">Image</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="file" class="form-control" name="oldpassword" id="oldpassword">
+                               
+                            </div>
+                            <div id="oldpasswordError" class="text-danger error-message" style="font-size: 10px; color: red;"></div>
+                        </div>
+                    </div>   -->
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

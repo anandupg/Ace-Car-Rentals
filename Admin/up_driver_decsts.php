@@ -75,7 +75,7 @@ if (isset($_GET['driver_id'])) {
                     <head>
                       <meta charset="UTF-8">
                       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                      <title>Login error</title>
+                      <title></title>
                       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                     </head>
                     <body>
