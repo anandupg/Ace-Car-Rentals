@@ -127,6 +127,6 @@ $conn->close();
         // Automatically close the dropdown after 1000 milliseconds (1 second)
         setTimeout(function () {
             dropdown.classList.remove("show");
-        }, 4000);
+        }, 4000); 
     }
 </script>
