@@ -5,6 +5,15 @@ include "../connect.php";
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+if(!isset($_SESSION['login_id'])){
+    header("Location:../logout.php");
+   exit();
+}
+if($_SESSION['type_id']!=1){
+    header("Location:../logout.php");
+   exit();
+}
+$_SESSION['type_id'];
 if(isset($_POST['password_update'])) {
   $loginId = $_SESSION['login_id']; // Example login_id to update password
   $oldPassword = $_POST['oldpassword']; // Example old password

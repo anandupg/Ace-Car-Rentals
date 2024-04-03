@@ -168,9 +168,9 @@ $result_pending = $conn->query($sql_pending);
                                 <thead>
                                     <tr>
                                     <th scope="col">Profile</th>
-                                        <th scope="col">Reg ID</th>
+                                        
                                        
-                                        <th scope="col">Login ID</th>
+                                        <th scope="col">SI No</th>
                                         <th scope="col">First Name</th>
                                         <th scope="col">Last Name</th>
                                         <th scope="col">Email</th>
@@ -195,6 +195,7 @@ $result_pending = $conn->query($sql_pending);
                            
                                     $result = $conn->query($sql);
                                     // Loop through the result set
+                                    $sno=1;
                                     while ($row = $result->fetch_assoc()) {
                                         $image = "../profile_images/" . $row['image'];
                                         echo "<tr>";
@@ -205,8 +206,8 @@ $result_pending = $conn->query($sql_pending);
                                             echo "<td><img src='642902-200.png' alt='Default Img' width='65px' height='65px'></td>";
                                         }
                                         // Output table data for each column
-                                        echo "<th scope='row'>" . $row['reg_id'] . "</th>";
-                                        echo "<td>" . $row['login_id'] . "</td>";
+                                        
+                                echo "<td>" . $sno++ . "</td>";
                                         echo "<td>" . $row['fname'] . "</td>";
                                         echo "<td>" . $row['lname'] . "</td>";
                                         echo "<td>" . $row['email'] . "</td>";
@@ -261,9 +262,7 @@ $result_pending = $conn->query($sql_pending);
                                 <thead>
                                     <tr>
                                     <th scope="col">Profile</th>
-                                        <th scope="col">Reg ID</th>
-                                       
-                                        <th scope="col">Login ID</th>
+                                        <th scope="col">SI No</th>
                                         <th scope="col">First Name</th>
                                         <th scope="col">Last Name</th>
                                         <th scope="col">Email</th>
@@ -281,6 +280,7 @@ $result_pending = $conn->query($sql_pending);
       
    
                                     <?php
+                                    $sno=1;
                                     // Loop through the result set
                                     $sql = "SELECT r.*
                                     FROM tbl_registration r
@@ -298,8 +298,8 @@ $result_pending = $conn->query($sql_pending);
                                             echo "<td><img src='642902-200.png' alt='Default Img' width='65px' height='65px'></td>";
                                         }
                                         // Output table data for each column
-                                        echo "<th scope='row'>" . $row['reg_id'] . "</th>";
-                                        echo "<td>" . $row['login_id'] . "</td>";
+                                        echo "<td>" . $sno++ . "</td>";
+
                                         echo "<td>" . $row['fname'] . "</td>";
                                         echo "<td>" . $row['lname'] . "</td>";
                                         echo "<td>" . $row['email'] . "</td>";

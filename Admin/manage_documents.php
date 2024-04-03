@@ -1,5 +1,14 @@
 <?php
 include "../connect.php";
+if(!isset($_SESSION['login_id'])){
+    header("Location:../logout.php");
+   exit();
+}
+if($_SESSION['type_id']!=1){
+    header("Location:../logout.php");
+   exit();
+}
+$_SESSION['type_id'];
 $sql = "SELECT * FROM tbl_registration";
 $result = $conn->query($sql);
 
@@ -135,8 +144,8 @@ $result_pending = $conn->query($sql_pending);
                         <table class="table table custom-table" style="color: white;">
                             <thead>
                                 <tr>
-                                    <th scope="col">Doc Id</th>
-                                    <th scope="col">Login Id</th>
+                                    
+                                    <th scope="col">SI No</th>
                                     <th scope="col">First name</th>
                                     <th scope="col">Last name</th>
                                     <th scope="col">Email</th>
@@ -148,10 +157,12 @@ $result_pending = $conn->query($sql_pending);
                             </thead>
                             <tbody>
                             <?php
+                            $sno=1;
                             while ($row2 = $result_pending->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td>" . $row2['doc_id'] . "</td>";
-                                echo "<td>" . $row2['login_id'] . "</td>";
+                                
+                                echo "<td>" . $sno++ . "</td>";
+                               
 
                                 $login_id = $row2['login_id'];
                                 $sql_registration = "SELECT * FROM tbl_registration WHERE login_id=$login_id";
@@ -202,8 +213,8 @@ $result_pending = $conn->query($sql_pending);
                                                 <table class="table table custom-table" style="color: white;">
                                                     <thead>
                                                         <tr>
-                                                            <th scope="col">Doc Id</th>
-                                                            <th scope="col">Login Id</th>
+                                                            <th scope="col">SI No</th>
+                                                            
                                                             <th scope="col">First name</th>
                                                             <th scope="col">Last name</th>
                                                            <th scope="col">Email</th>
@@ -224,12 +235,12 @@ $result3 = $conn->query($sql3);
 
 // Check if both queries executed successfully
 if ($result && $result3) {
-   
+    $sno=1;
     // Loop through the result set of tbl_documents
     while ($row3 = $result3->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row3['doc_id'] . "</td>";
-        echo "<td>" . $row3['login_id'] . "</td>";
+       
+        echo "<td>" . $sno++ . "</td>";
 
         // Retrieve data from tbl_registration based on login_id
         $login_id = $row3['login_id'];
@@ -285,8 +296,8 @@ $result_pending = $conn->query($sql_pending);
                                                 <table class="table table custom-table" style="color: white;">
                                                     <thead>
                                                         <tr>
-                                                            <th scope="col">Doc Id</th>
-                                                            <th scope="col">Login Id</th>
+                                                            <th scope="col">SI No</th>
+                                                            
                                                             <th scope="col">First name</th>
                                                             <th scope="col">Last name</th>
                                                            <th scope="col">Email</th>
@@ -307,12 +318,12 @@ $result2 = $conn->query($sql2);
 
 // Check if both queries executed successfully
 if ($result && $result2) {
-   
+    $sno=1;
     // Loop through the result set of tbl_documents
     while ($row2 = $result2->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row2['doc_id'] . "</td>";
-        echo "<td>" . $row2['login_id'] . "</td>";
+       
+                                echo "<td>" . $sno++ . "</td>";
 
         // Retrieve data from tbl_registration based on login_id
         $login_id = $row2['login_id'];

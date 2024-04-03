@@ -1,3 +1,14 @@
+<?php
+if(!isset($_SESSION['login_id'])){
+    header("Location:../logout.php");
+   exit();
+}
+if($_SESSION['type_id']!=1){
+    header("Location:../logout.php");
+   exit();
+}
+$_SESSION['type_id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,5 +1,14 @@
 <?php
 include "../connect.php";
+if(!isset($_SESSION['login_id'])){
+    header("Location:../logout.php");
+   exit();
+}
+if($_SESSION['type_id']!=1){
+    header("Location:../logout.php");
+   exit();
+}
+$_SESSION['type_id'];
 $sql = "SELECT * FROM tbl_location";
 $result = $conn->query($sql);
 

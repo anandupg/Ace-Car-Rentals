@@ -1,3 +1,14 @@
+<?php
+if(!isset($_SESSION['login_id'])){
+    header("Location:../logout.php");
+   exit();
+}
+if($_SESSION['type_id']!=1){
+    header("Location:../logout.php");
+   exit();
+}
+$_SESSION['type_id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,7 +132,7 @@ $result_pending = $conn->query($sql_pending);
                         <table class="table table custom-table" style="color: white;">
                             <thead>
                                 <tr>
-                                    <th scope="col">Driver Id</th>
+                                    <th scope="col">SI No</th>
                                     <th scope="col">First name</th>
                                     <th scope="col">Last name</th>
                                     <th scope="col">Email</th>
@@ -138,9 +149,10 @@ $result_pending = $conn->query($sql_pending);
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
+                                    $sno=1;
                                     while ($row = $result->fetch_assoc()) {
                                         echo '<tr>';
-                                        echo '<td>' . $row['driver_id'] . '</td>';
+                                        echo "<td>" . $sno++ . "</td>";
                                         echo '<td>' . $row['fname'] . '</td>';
                                         echo '<td>' . $row['lname'] . '</td>';
                                         echo '<td>' . $row['email'] . '</td>';
@@ -181,7 +193,7 @@ $result_pending = $conn->query($sql_pending);
                         <table class="table table custom-table" style="color: white;">
                             <thead>
                                 <tr>
-                                    <th scope="col">Driver Id</th>
+                                    <th scope="col">SI No</th>
                                     <th scope="col">First name</th>
                                     <th scope="col">Last name</th>
                                     <th scope="col">Email</th>
@@ -198,9 +210,10 @@ include "../connect.php";
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
+                                    $sno=1;
                                     while ($row = $result->fetch_assoc()) {
                                         echo '<tr>';
-                                        echo '<td>' . $row['driver_id'] . '</td>';
+                                        echo "<td>" . $sno++ . "</td>";
                                         echo '<td>' . $row['fname'] . '</td>';
                                         echo '<td>' . $row['lname'] . '</td>';
                                         echo '<td>' . $row['email'] . '</td>';
@@ -241,7 +254,7 @@ $result_pending = $conn->query($sql_pending);
                         <table class="table table custom-table" style="color: white;">
                             <thead>
                                 <tr>
-                                    <th scope="col">Driver Id</th>
+                                    <th scope="col">SI No</th>
                                     <th scope="col">First name</th>
                                     <th scope="col">Last name</th>
                                     <th scope="col">Email</th>
@@ -258,9 +271,10 @@ include "../connect.php";
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
+                                    $sno=1;
                                     while ($row = $result->fetch_assoc()) {
                                         echo '<tr>';
-                                        echo '<td>' . $row['driver_id'] . '</td>';
+                                        echo "<td>" . $sno++ . "</td>";
                                         echo '<td>' . $row['fname'] . '</td>';
                                         echo '<td>' . $row['lname'] . '</td>';
                                         echo '<td>' . $row['email'] . '</td>';

@@ -1,6 +1,14 @@
 <?php
 include "../connect.php";
-
+if(!isset($_SESSION['login_id'])){
+    header("Location:../logout.php");
+   exit();
+}
+if($_SESSION['type_id']!=1){
+    header("Location:../logout.php");
+   exit();
+}
+$_SESSION['type_id'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if the form has been submitted
     

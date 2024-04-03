@@ -1,5 +1,14 @@
 <?php
 include "../connect.php";
+if(!isset($_SESSION['login_id'])){
+    header("Location:../logout.php");
+   exit();
+}
+if($_SESSION['type_id']!=1){
+    header("Location:../logout.php");
+   exit();
+}
+$_SESSION['type_id'];
 $sql = "SELECT * FROM tbl_car_category";
 $result = $conn->query($sql);
 
@@ -210,7 +219,7 @@ if (isset($_POST['update'])) {
                 <table class="table" style="color: white;">
                     <thead>
                         <tr>
-                            <th scope="col">Category id</th>
+                            <th scope="col">SI No</th>
                             <th scope="col">Category name</th>
                             <th scope="col">Status</th>
                             <th scope="col" >Actions</th>
@@ -219,10 +228,12 @@ if (isset($_POST['update'])) {
                     </thead>
                     <tbody>
                     <?php
+                     $sno=1;
                         // Loop through the result set
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo "<th scope='row'>" . $row['category_id'] . "</th>";
+                           
+                                echo "<td>" . $sno++ . "</td>";
                             echo "<td > " . $row['category_name'] . "</td>";
                             echo "<td>" . $row['status'] . "</td>";
                             echo "<div class='d-grid gap-2 d-md-flex justify-content-md-end'>";

@@ -73,6 +73,7 @@ if (isset($_POST['submit'])) {
            
             session_start();
             $_SESSION['login_id'] = $loginId;
+            $_SESSION['type_id'] = $typeId;
         
             if($status == "Active"){
               if($typeId == 1){

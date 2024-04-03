@@ -1,5 +1,14 @@
 <?php
 include "../connect.php";
+if(!isset($_SESSION['login_id'])){
+    header("Location:../logout.php");
+   exit();
+}
+if($_SESSION['type_id']!=1){
+    header("Location:../logout.php");
+   exit();
+}
+$_SESSION['type_id'];
 $sql = "SELECT * FROM tbl_cars";
 $result = $conn->query($sql);
 
@@ -455,7 +464,7 @@ if (isset($_POST['delete']) && $_POST['delete'] == 1) {
                                                 <table class="table table custom-table" style="color: white;">
                                                     <thead>
                                                         <tr>
-                                                            <th scope="col">Car Id</th>
+                                                            <th scope="col">SI No</th>
                                                             <th scope="col">Car Image</th>
                                                             <th scope="col">Company</th>
                                                             <th scope="col">Model</th>
@@ -471,12 +480,14 @@ if (isset($_POST['delete']) && $_POST['delete'] == 1) {
                                                     </thead>
                                                     <tbody>
                                                         <?php
+                                                          $sno=1;
                                     // Loop through the result set
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>";
                                         $image = "./productimg/" . $row['image'];
                                         // Output table data for each column
-                                        echo "<th scope='row'>" . $row['car_id'] . "</th>";
+                                      
+                                        echo "<td>" . $sno++ . "</td>";
                                         echo "<td><img src='" . $image . "' alt='Car Image' width='95px' height='65px' style='cursor:pointer;' onclick=\"showEnlargedImage('" . $image . "');\"></td>";
 
                                         echo "<td>" . $row['company'] . "</td>";
