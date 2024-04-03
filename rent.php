@@ -23,7 +23,7 @@ if(isset($_SESSION['login_id'])) {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Details</title>
+            <title>Rent Details</title>
             <link rel="icon" type="snapedit_1709139230904.jpeg" href="snapedit_1709139230904.jpeg">
             <style>
                 body {
